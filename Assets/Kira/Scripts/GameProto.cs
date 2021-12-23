@@ -20,8 +20,8 @@ namespace Kira
             stats = entity.entityStats;
 
             string content = $"Stats for {entity.name}\n";
-            content += $"Health: {stats.health.value} / {stats.maxHealth.value}\n";
-            content += $"Speed: {stats.speed.value} / {stats.maxSpeed.value}";
+            content += $"Health: {stats.health.value} / {stats.health.max}\n";
+            content += $"Speed: {stats.speed.value} / {stats.speed.max}";
 
             statsText.text = content;
 

@@ -12,14 +12,20 @@ namespace Kira
         [SerializeField]
         private Image _slowFill;
         [SerializeField]
-        private TextMeshProUGUI _text;
+        protected TextMeshProUGUI _text;
 
-        private float max = 100;
-        private float cur = 100;
-        private float slow = 100;
+        protected bool _hasSlowBar;
 
+        protected float max = 100;
+        protected float cur = 100;
+        protected float slow = 100;
         private float t;
-        
+
+        private void Awake()
+        {
+            _hasSlowBar = _slowFill != null;
+        }
+
         public void SetValues(float cur, float max)
         {
             this.cur = cur;
@@ -40,7 +46,14 @@ namespace Kira
             Reduce(-amount);
         }
 
-        private void Update()
+        protected virtual void Update()
+        {
+            UpdateText();
+            if (_hasSlowBar) UpdateSlowBar();
+            _fill.fillAmount = cur / max;
+        }
+
+        private void UpdateSlowBar()
         {
             if (Math.Abs(slow - cur) > 0.05f)
             {
@@ -48,9 +61,12 @@ namespace Kira
                 t += 1.0f * Time.deltaTime;
             }
 
-            _text.text = $"{cur:F0} / {max:F0}";
-            _fill.fillAmount = cur / max;
             _slowFill.fillAmount = slow / max;
+        }
+
+        protected virtual void UpdateText()
+        {
+            _text.text = ($"{cur:F0} / {max:F0}");
         }
     }
 }

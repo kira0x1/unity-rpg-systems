@@ -46,9 +46,8 @@ namespace Kira
 
     public enum StatType
     {
-        MAXHEALTH,
         HEALTH,
-        MAXSPEED,
+        MANA,
         SPEED,
     }
 }

@@ -18,7 +18,7 @@ namespace Kira
         {
             stats.Clear();
             stats.Add(StatType.HEALTH, entityStats.health);
-            stats.Add(StatType.MAXHEALTH, entityStats.maxHealth);
+            stats.Add(StatType.MANA, entityStats.mana);
         }
     }
 }

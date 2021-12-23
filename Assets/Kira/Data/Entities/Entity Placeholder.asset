@@ -14,14 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityStats:
     health:
-      value: 50
-      statType: 1
-    maxHealth:
-      value: 50
-      statType: 0
+      value: 200
+      max: 200
+    mana:
+      value: 9000
+      max: 9000
     speed:
       value: 10
-      statType: 3
-    maxSpeed:
-      value: 10
-      statType: 2
+      max: 100
