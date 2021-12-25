@@ -28,14 +28,13 @@ namespace Kira
             }
         }
 
-        public void CastSpell(Spell spell)
+        public void CastSpell(SpellData spell)
         {
             var canCast = CanCast(spell);
             if (!canCast) return;
 
             _isCasting = true;
-
-            _curJob = new CastJob(spell.GetData());
+            _curJob = new CastJob(spell);
             _curJob.OnSpellDoneCast += OnCastDone;
             _castBar.SetSpell(_curJob);
         }
@@ -43,11 +42,12 @@ namespace Kira
         private void OnCastDone(SpellData spellData)
         {
             entityCharacter.entity.entityStats.mana.Reduce(spellData.cost);
+            spellData.OnCast(entityCharacter.entity);
             Debug.Log($"{spellData.spellName} done casting!");
             _isCasting = false;
         }
 
-        private bool CanCast(Spell spell)
+        private bool CanCast(SpellData spell)
         {
             if (_isCasting)
             {
@@ -55,7 +55,7 @@ namespace Kira
                 return false;
             }
 
-            float cost = spell.resourceCost;
+            float cost = spell.cost;
             float curMana = entityCharacter.entity.entityStats.mana.value;
 
             if (cost > curMana)
@@ -64,12 +64,17 @@ namespace Kira
                 return false;
             }
 
+            if (spell.curCD > 0)
+            {
+                Debug.Log("Spell is on cooldown");
+                return false;
+            }
+
             if (spell.requiresTarget)
             {
                 Debug.Log("This spell requires a target");
                 return false;
             }
-
 
             return true;
         }

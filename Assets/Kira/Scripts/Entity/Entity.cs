@@ -13,7 +13,7 @@ namespace Kira
         {
             return stats[statType];
         }
-
+        
         private void OnEnable()
         {
             stats.Clear();
