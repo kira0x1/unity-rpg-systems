@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Kira
 {
@@ -6,9 +7,21 @@ namespace Kira
     public class Spell : ScriptableObject
     {
         public string spellName;
+        public Sprite icon;
         public float resourceCost;
         public float coolDownTime;
         public float castTime;
+        public bool requiresTarget = true;
+
+        public enum TargetType
+        {
+            NONE,
+            SELF,
+            FRIENDLY,
+            ENEMY
+        }
+
+        public TargetType targetType = TargetType.SELF;
 
         public SpellData GetData()
         {

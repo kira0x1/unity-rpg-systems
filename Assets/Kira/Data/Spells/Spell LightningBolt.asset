@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7eb50e0e00ae2154dbd09c05424be31d, type: 3}
-  m_Name: Spell FireBall
+  m_Name: Spell LightningBolt
   m_EditorClassIdentifier: 
-  spellName: Fireball
-  icon: {fileID: 21300000, guid: 2d0997ac1b1fd664e98202450e7ea2d7, type: 3}
-  resourceCost: 50
-  coolDownTime: 1
-  castTime: 1
-  requiresTarget: 1
-  targetType: 1
+  spellName: Lightning Bolt
+  icon: {fileID: 21300000, guid: ff42a689ad961fd4b9da0a00643acce7, type: 3}
+  resourceCost: 30
+  coolDownTime: 0.5
+  castTime: 2

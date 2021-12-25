@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Kira
@@ -8,11 +6,7 @@ namespace Kira
     public class EntityCaster : MonoBehaviour
     {
         private EntityCharacter entityCharacter;
-        private Stack castJobs = new Stack();
         private CastBar _castBar;
-
-        [SerializeField]
-        private List<Spell> _spells = new List<Spell>();
 
         private bool _isCasting;
         private CastJob _curJob;
@@ -25,11 +19,6 @@ namespace Kira
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                CastNextSpell();
-            }
-
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 if (_isCasting)
@@ -39,25 +28,12 @@ namespace Kira
             }
         }
 
-        public void CastNextSpell()
+        public void CastSpell(Spell spell)
         {
-            if (_isCasting)
-            {
-                Debug.Log("Cannot cast another spell while casting");
-                return;
-            }
+            var canCast = CanCast(spell);
+            if (!canCast) return;
 
             _isCasting = true;
-            var spell = _spells[0];
-            Debug.Log("Casting Spell " + spell.spellName);
-            float cost = spell.resourceCost;
-            float curMana = entityCharacter.entity.entityStats.mana.value;
-
-            if (cost > curMana)
-            {
-                Debug.Log("Not enough mana to cast this spell");
-                return;
-            }
 
             _curJob = new CastJob(spell.GetData());
             _curJob.OnSpellDoneCast += OnCastDone;
@@ -69,6 +45,33 @@ namespace Kira
             entityCharacter.entity.entityStats.mana.Reduce(spellData.cost);
             Debug.Log($"{spellData.spellName} done casting!");
             _isCasting = false;
+        }
+
+        private bool CanCast(Spell spell)
+        {
+            if (_isCasting)
+            {
+                Debug.Log("Cannot cast another spell while casting");
+                return false;
+            }
+
+            float cost = spell.resourceCost;
+            float curMana = entityCharacter.entity.entityStats.mana.value;
+
+            if (cost > curMana)
+            {
+                Debug.Log("Not enough mana to cast this spell");
+                return false;
+            }
+
+            if (spell.requiresTarget)
+            {
+                Debug.Log("This spell requires a target");
+                return false;
+            }
+
+
+            return true;
         }
 
         public void CancelSpell()

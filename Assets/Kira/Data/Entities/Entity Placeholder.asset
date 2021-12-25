@@ -17,8 +17,8 @@ MonoBehaviour:
       value: 200
       max: 200
     mana:
-      value: 9000
-      max: 9000
+      value: 100
+      max: 100
     speed:
       value: 10
       max: 100
