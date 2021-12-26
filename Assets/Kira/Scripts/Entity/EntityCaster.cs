@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Kira
@@ -34,15 +35,19 @@ namespace Kira
             if (!canCast) return;
 
             _isCasting = true;
-            _curJob = new CastJob(spell);
+
+            Entity target = entityCharacter.entity;
+            if (spell.requiresTarget) target = TargetingManager.Instance.Target.entity;
+
+            _curJob = new CastJob(spell, target);
             _curJob.OnSpellDoneCast += OnCastDone;
             _castBar.SetSpell(_curJob);
         }
 
-        private void OnCastDone(SpellData spellData)
+        private void OnCastDone(SpellData spellData, Entity entity)
         {
             entityCharacter.entity.entityStats.mana.Reduce(spellData.cost);
-            spellData.OnCast(entityCharacter.entity);
+            spellData.OnCast(entity);
             Debug.Log($"{spellData.spellName} done casting!");
             _isCasting = false;
         }
@@ -70,7 +75,7 @@ namespace Kira
                 return false;
             }
 
-            if (spell.requiresTarget)
+            if (spell.requiresTarget && !TargetingManager.HasTarget)
             {
                 Debug.Log("This spell requires a target");
                 return false;

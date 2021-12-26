@@ -1,10 +1,14 @@
+using TMPro;
 using UnityEngine;
 
 namespace Kira
 {
     public class TargetingUI : MonoBehaviour
     {
-        public GameObject uiParent;
+        public CanvasGroup uiParent;
+
+        [SerializeField]
+        private TextMeshProUGUI _targetNameText;
 
         [SerializeField]
         private StatProgressBar _healthBar;
@@ -12,13 +16,10 @@ namespace Kira
         [SerializeField]
         private StatProgressBar _manaBar;
 
-        private bool _hasTarget;
-
         private Entity _entity;
         private EntityStats _stats;
         private Stat _health;
         private Stat _mana;
-
 
         public void SetTarget(Targetable target)
         {
@@ -26,11 +27,13 @@ namespace Kira
             _stats = _entity.entityStats;
             _health = _stats.health;
             _mana = _stats.mana;
-            _hasTarget = true;
-            uiParent.SetActive(true);
 
-            _healthBar.SetValues(_health.value, _health.max);
-            _manaBar.SetValues(_mana.value, _mana.max);
+            _healthBar.SetValues(_health.value, _health.max, true);
+            _manaBar.SetValues(_mana.value, _mana.max, true);
+
+            _targetNameText.text = _entity.entityName;
+
+            ShowUI();
 
             _stats.health.OnValueChanged += OnHealthChanged;
             _stats.mana.OnValueChanged += OnManaChanged;
@@ -38,9 +41,7 @@ namespace Kira
 
         public void Deselect()
         {
-            _hasTarget = false;
-            uiParent.SetActive(false);
-
+            HideUI();
             _stats.health.OnValueChanged -= OnHealthChanged;
             _stats.mana.OnValueChanged -= OnManaChanged;
         }
@@ -48,11 +49,26 @@ namespace Kira
         private void OnHealthChanged()
         {
             _healthBar.SetValues(_health.value, _health.max);
+            Debug.Log("on health changed");
         }
 
         private void OnManaChanged()
         {
             _manaBar.SetValues(_mana.value, _mana.max);
+        }
+
+        private void ShowUI()
+        {
+            uiParent.blocksRaycasts = true;
+            uiParent.interactable = true;
+            uiParent.alpha = 1f;
+        }
+
+        private void HideUI()
+        {
+            uiParent.blocksRaycasts = false;
+            uiParent.interactable = false;
+            uiParent.alpha = 0f;
         }
     }
 }

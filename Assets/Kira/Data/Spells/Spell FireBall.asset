@@ -15,7 +15,13 @@ MonoBehaviour:
   spellName: Fireball
   icon: {fileID: 21300000, guid: 2d0997ac1b1fd664e98202450e7ea2d7, type: 3}
   resourceCost: 50
-  coolDownTime: 1
-  castTime: 1
+  coolDownTime: 0
+  castTime: 0.2
   requiresTarget: 1
-  targetType: 1
+  targetType: 3
+  effects:
+  - value: -100
+    instant: 1
+    effectTime: 0
+    effectTick: 0
+    effectsStat: 0

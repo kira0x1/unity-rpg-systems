@@ -6,6 +6,7 @@ namespace Kira
     [CreateAssetMenu]
     public class Entity : ScriptableObject
     {
+        public string entityName = "empty";
         public EntityStats entityStats;
         public Dictionary<StatType, Stat> stats = new();
 
@@ -13,7 +14,7 @@ namespace Kira
         {
             return stats[statType];
         }
-        
+
         private void OnEnable()
         {
             stats.Clear();

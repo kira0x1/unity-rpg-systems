@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67a82391405dc934ea272b30761163f4, type: 3}
   m_Name: NPC Entity
   m_EditorClassIdentifier: 
+  entityName: blocky
   entityStats:
     health:
-      value: 64.5
+      value: 64
       max: 100
     mana:
       value: 100

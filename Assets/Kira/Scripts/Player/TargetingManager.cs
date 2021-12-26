@@ -6,23 +6,37 @@ namespace Kira
     {
         [SerializeField]
         private LayerMask _targetableLayer;
-        private GameObject _curTarget;
+        private Targetable _curTarget;
         private Camera cam;
+
         private Targetable _prevTarget;
-
         private bool _hasPreviousTarget;
-
-        private bool _hasSelected;
         private Targetable _previousSelected;
 
-        [SerializeField] private float clickCoolDown = 0.1f;
+        [SerializeField]
+        private float clickCoolDown = 0.1f;
+
         private float _nextClickTime;
         private bool _hoveringOnTarget;
 
         private TargetingUI targetingUI;
 
+        public static bool HasTarget { get; private set; }
+        public static TargetingManager Instance { get; private set; }
+
+        public Targetable Target => _curTarget;
+
         private void Awake()
         {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            Instance = this;
+            HasTarget = false;
+
             cam = Camera.main;
             targetingUI = FindObjectOfType<TargetingUI>();
         }
@@ -45,10 +59,10 @@ namespace Kira
         {
             _nextClickTime = Time.time + clickCoolDown;
 
-            if (_hasSelected)
+            if (HasTarget)
             {
                 _previousSelected.SetSelected(false);
-                _hasSelected = false;
+                HasTarget = false;
                 targetingUI.Deselect();
             }
 
@@ -56,8 +70,9 @@ namespace Kira
             {
                 _previousSelected = _prevTarget;
                 _previousSelected.SetSelected(true);
-                _hasSelected = true;
+                HasTarget = true;
                 targetingUI.SetTarget(_previousSelected);
+                _curTarget = _previousSelected;
             }
         }
 

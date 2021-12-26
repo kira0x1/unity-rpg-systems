@@ -9,8 +9,9 @@ namespace Kira
         [SerializeField] private Entity entity;
         private Stat stat;
 
-        private void Start()
+        public void SetEntity(Entity entity)
         {
+            this.entity = entity;
             stat = entity.GetStat(statType);
             stat.OnValueChanged += OnValueChanged;
             OnValueChanged();
@@ -18,7 +19,7 @@ namespace Kira
 
         private void OnDisable()
         {
-            stat.OnValueChanged -= OnValueChanged;
+            if (stat != null) stat.OnValueChanged -= OnValueChanged;
         }
 
         private void OnValueChanged()

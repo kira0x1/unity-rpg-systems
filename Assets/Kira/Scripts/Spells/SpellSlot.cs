@@ -23,7 +23,9 @@ namespace Kira
         {
             if (slotKeybind != KeyCode.None) SetKey(slotKeybind);
             else SetKey(KeyCode.Alpha1);
+
             SetSpell(spell);
+            _cdImage.fillAmount = 0;
         }
 
         private void Update()
@@ -44,7 +46,14 @@ namespace Kira
                 spell.curCD = 0;
             }
 
-            _cdImage.fillAmount = spell.curCD / spell.cdTime;
+            if (spell.cdTime == 0)
+            {
+                _cdImage.fillAmount = 0f;
+            }
+            else
+            {
+                _cdImage.fillAmount = spell.curCD / spell.cdTime;
+            }
         }
 
         public void OnClick()

@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Kira
@@ -55,7 +56,10 @@ namespace Kira
         public void OnCast(Entity entity)
         {
             Debug.Log($"Spell: {spellName} cast, setting curCD to {cdTime}");
-            curCD = cdTime;
+
+            if (cdTime <= 0) curCD = 0;
+            else curCD = cdTime;
+
             foreach (Effect effect in effects)
             {
                 effect.OnEffect(entity);

@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Kira
 {
+    [SelectionBase]
     public class Targetable : MonoBehaviour
     {
         public Entity entity;

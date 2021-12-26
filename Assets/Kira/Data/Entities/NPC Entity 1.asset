@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67a82391405dc934ea272b30761163f4, type: 3}
-  m_Name: Entity Placeholder
+  m_Name: NPC Entity 1
   m_EditorClassIdentifier: 
-  entityName: empty
+  entityName: bricky
   entityStats:
     health:
-      value: 460
-      max: 500
+      value: 350
+      max: 360
     mana:
-      value: 1000
-      max: 1000
+      value: 100
+      max: 100
     speed:
       value: 10
       max: 100
