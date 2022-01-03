@@ -12,6 +12,7 @@ namespace Kira
         public float coolDownTime;
         public float castTime;
         public bool requiresTarget = true;
+        public bool canCastOnDead;
 
         public enum TargetType
         {
@@ -26,7 +27,7 @@ namespace Kira
 
         public SpellData GetData()
         {
-            return new SpellData(spellName, icon, resourceCost, coolDownTime, castTime, requiresTarget, effects);
+            return new SpellData(spellName, icon, resourceCost, coolDownTime, castTime, requiresTarget, effects, canCastOnDead);
         }
     }
 
@@ -40,8 +41,9 @@ namespace Kira
         public float castTime;
         public Effect[] effects;
         public bool requiresTarget;
+        public bool canCastOnDead;
 
-        public SpellData(string spellName, Sprite icon, float cost, float cdTime, float castTime, bool requiresTarget, Effect[] effects)
+        public SpellData(string spellName, Sprite icon, float cost, float cdTime, float castTime, bool requiresTarget, Effect[] effects, bool canCastOnDead)
         {
             this.spellName = spellName;
             this.icon = icon;
@@ -50,6 +52,7 @@ namespace Kira
             this.castTime = castTime;
             this.requiresTarget = requiresTarget;
             this.effects = effects;
+            this.canCastOnDead = canCastOnDead;
             curCD = 0;
         }
 

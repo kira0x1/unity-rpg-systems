@@ -10,6 +10,20 @@ namespace Kira
         [SerializeField] private GameObject _selected;
         private bool _isSelected;
 
+        [SerializeField]
+        private bool _healOnStart = true;
+
+        public bool IsDead => entity.GetStat(StatType.HEALTH).value <= 0;
+
+        private void Start()
+        {
+            if (_healOnStart)
+            {
+                var health = entity.GetStat(StatType.HEALTH);
+                health.SetValue(health.max);
+            }
+        }
+
         public void SetHover(bool on = true)
         {
             // _highlight.SetActive(on);

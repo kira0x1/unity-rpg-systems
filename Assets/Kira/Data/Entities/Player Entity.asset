@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67a82391405dc934ea272b30761163f4, type: 3}
-  m_Name: Entity Placeholder
+  m_Name: Player Entity
   m_EditorClassIdentifier: 
-  entityName: empty
+  entityName: Player
   entityStats:
     health:
-      value: 460
+      value: 490
       max: 500
     mana:
       value: 1000

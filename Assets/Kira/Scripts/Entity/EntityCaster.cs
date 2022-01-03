@@ -81,6 +81,13 @@ namespace Kira
                 return false;
             }
 
+            if (spell.requiresTarget && TargetingManager.HasTarget && !spell.canCastOnDead && TargetingManager.Instance.Target.IsDead)
+            {
+                Debug.Log("Cant cast this spell on a dead target");
+                return false;
+            }
+
+
             return true;
         }
 

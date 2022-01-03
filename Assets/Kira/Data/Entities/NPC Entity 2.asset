@@ -15,7 +15,7 @@ MonoBehaviour:
   entityName: cubey
   entityStats:
     health:
-      value: 10
+      value: 100
       max: 100
     mana:
       value: 100

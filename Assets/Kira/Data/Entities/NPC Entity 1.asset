@@ -15,7 +15,7 @@ MonoBehaviour:
   entityName: bricky
   entityStats:
     health:
-      value: 350
+      value: 360
       max: 360
     mana:
       value: 100
