@@ -20,9 +20,11 @@ MonoBehaviour:
   requiresTarget: 1
   canCastOnDead: 0
   targetType: 3
-  effects:
-  - value: -25
+  effectDatas:
+  - value: -30
     instant: 1
-    effectTime: 0
+    effectDuration: 0
+    effectFrequency: 0
     effectTick: 0
     effectsStat: 0
+  effects: []

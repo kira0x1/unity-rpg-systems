@@ -18,10 +18,13 @@ MonoBehaviour:
   coolDownTime: 2
   castTime: 0.4
   requiresTarget: 0
+  canCastOnDead: 0
   targetType: 1
-  effects:
-  - value: 10
+  effectDatas:
+  - value: 50
     instant: 1
-    effectTime: 0
+    effectDuration: 0
+    effectFrequency: 0
     effectTick: 0
     effectsStat: 0
+  effects: []

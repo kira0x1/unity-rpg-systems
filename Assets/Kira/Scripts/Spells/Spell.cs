@@ -1,8 +1,15 @@
-using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Kira
 {
+    public enum TargetType
+    {
+        NONE,
+        SELF,
+        FRIENDLY,
+        HOSTILE
+    }
+
     [CreateAssetMenu]
     public class Spell : ScriptableObject
     {
@@ -14,20 +21,27 @@ namespace Kira
         public bool requiresTarget = true;
         public bool canCastOnDead;
 
-        public enum TargetType
-        {
-            NONE,
-            SELF,
-            FRIENDLY,
-            HOSTILE
-        }
-
         public TargetType targetType = TargetType.SELF;
+
+        public EffectData[] effectDatas;
         public Effect[] effects;
 
         public SpellData GetData()
         {
-            return new SpellData(spellName, icon, resourceCost, coolDownTime, castTime, requiresTarget, effects, canCastOnDead);
+            EffectData[] data = new EffectData[effects.Length + effectDatas.Length];
+
+            for (int i = 0; i < effectDatas.Length; i++)
+            {
+                data[i] = effectDatas[i];
+            }
+
+            for (int i = effectDatas.Length; i < effects.Length; i++)
+            {
+                var e = effects[i].CreateEffectData();
+                data[i] = e;
+            }
+
+            return new SpellData(spellName, icon, resourceCost, coolDownTime, castTime, requiresTarget, data, canCastOnDead);
         }
     }
 
@@ -39,11 +53,11 @@ namespace Kira
         public float curCD;
         public float cdTime;
         public float castTime;
-        public Effect[] effects;
+        public EffectData[] effects;
         public bool requiresTarget;
         public bool canCastOnDead;
 
-        public SpellData(string spellName, Sprite icon, float cost, float cdTime, float castTime, bool requiresTarget, Effect[] effects, bool canCastOnDead)
+        public SpellData(string spellName, Sprite icon, float cost, float cdTime, float castTime, bool requiresTarget, EffectData[] effects, bool canCastOnDead)
         {
             this.spellName = spellName;
             this.icon = icon;
@@ -63,7 +77,7 @@ namespace Kira
             if (cdTime <= 0) curCD = 0;
             else curCD = cdTime;
 
-            foreach (Effect effect in effects)
+            foreach (EffectData effect in effects)
             {
                 effect.OnEffect(entity);
             }
