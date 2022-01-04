@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Kira
@@ -25,6 +26,9 @@ namespace Kira
         public static TargetingManager Instance { get; private set; }
 
         public Targetable Target => _curTarget;
+
+        public Action OnDeselectTarget;
+        public Action<Targetable> OnTarget;
 
         private void Awake()
         {
@@ -61,9 +65,12 @@ namespace Kira
 
             if (HasTarget)
             {
+                if (_previousSelected.GetInstanceID() == _prevTarget.GetInstanceID()) return;
+
                 _previousSelected.SetSelected(false);
                 HasTarget = false;
                 targetingUI.Deselect();
+                OnDeselectTarget?.Invoke();
             }
 
             if (_hoveringOnTarget)
@@ -73,6 +80,7 @@ namespace Kira
                 HasTarget = true;
                 targetingUI.SetTarget(_previousSelected);
                 _curTarget = _previousSelected;
+                OnTarget?.Invoke(_curTarget);
             }
         }
 

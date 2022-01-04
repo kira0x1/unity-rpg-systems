@@ -16,7 +16,7 @@ namespace Kira
 
         public EffectData CreateEffectData()
         {
-            return new EffectData(value, instant, effectDuration, effectFrequency, effectTick, effectStat);
+            return new EffectData(effectName, icon, value, instant, effectDuration, effectFrequency, effectTick, effectStat);
         }
     }
 }

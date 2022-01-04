@@ -21,10 +21,14 @@ MonoBehaviour:
   canCastOnDead: 0
   targetType: 3
   effectDatas:
-  - value: -30
+  - name: DAMAGE
+    icon: {fileID: 0}
+    value: 0
     instant: 1
     effectDuration: 0
     effectFrequency: 0
     effectTick: 0
     effectsStat: 0
-  effects: []
+    timeLeft: 0
+  effects:
+  - {fileID: 11400000, guid: ff9c3cff79547294fbbbf191e293af9b, type: 2}

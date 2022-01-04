@@ -56,7 +56,7 @@ namespace Kira
         {
             if (_isCasting)
             {
-                Debug.Log("Cannot cast another spell while casting");
+                // Debug.Log("Cannot cast another spell while casting");
                 return false;
             }
 
@@ -65,25 +65,25 @@ namespace Kira
 
             if (cost > curMana)
             {
-                Debug.Log("Not enough mana to cast this spell");
+                // Debug.Log("Not enough mana to cast this spell");
                 return false;
             }
 
             if (spell.curCD > 0)
             {
-                Debug.Log("Spell is on cooldown");
+                // Debug.Log("Spell is on cooldown");
                 return false;
             }
 
             if (spell.requiresTarget && !TargetingManager.HasTarget)
             {
-                Debug.Log("This spell requires a target");
+                // Debug.Log("This spell requires a target");
                 return false;
             }
 
             if (spell.requiresTarget && TargetingManager.HasTarget && !spell.canCastOnDead && TargetingManager.Instance.Target.IsDead)
             {
-                Debug.Log("Cant cast this spell on a dead target");
+                // Debug.Log("Cant cast this spell on a dead target");
                 return false;
             }
 
@@ -93,7 +93,7 @@ namespace Kira
 
         public void CancelSpell()
         {
-            Debug.Log("Canceled Cast");
+            // Debug.Log("Canceled Cast");
             _castBar.CancelCast();
             _isCasting = false;
         }

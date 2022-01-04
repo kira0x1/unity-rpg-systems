@@ -49,7 +49,6 @@ namespace Kira
         private void OnHealthChanged()
         {
             _healthBar.SetValues(_health.value, _health.max);
-            Debug.Log("on health changed");
         }
 
         private void OnManaChanged()

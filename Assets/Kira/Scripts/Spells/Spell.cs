@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Kira
@@ -28,20 +29,19 @@ namespace Kira
 
         public SpellData GetData()
         {
-            EffectData[] data = new EffectData[effects.Length + effectDatas.Length];
+            List<EffectData> data = new();
 
             for (int i = 0; i < effectDatas.Length; i++)
             {
-                data[i] = effectDatas[i];
+                data.Add(effectDatas[i]);
             }
 
-            for (int i = effectDatas.Length; i < effects.Length; i++)
+            foreach (Effect effect in effects)
             {
-                var e = effects[i].CreateEffectData();
-                data[i] = e;
+                data.Add(effect.CreateEffectData());
             }
 
-            return new SpellData(spellName, icon, resourceCost, coolDownTime, castTime, requiresTarget, data, canCastOnDead);
+            return new SpellData(spellName, icon, resourceCost, coolDownTime, castTime, requiresTarget, data.ToArray(), canCastOnDead);
         }
     }
 
@@ -72,14 +72,20 @@ namespace Kira
 
         public void OnCast(Entity entity)
         {
-            Debug.Log($"Spell: {spellName} cast, setting curCD to {cdTime}");
-
             if (cdTime <= 0) curCD = 0;
             else curCD = cdTime;
 
-            foreach (EffectData effect in effects)
+            foreach (EffectData e in effects)
             {
-                effect.OnEffect(entity);
+                var effectCopy = new EffectData(e.name, e.icon, e.value, e.instant, e.effectDuration, e.effectFrequency, e.effectTick, e.effectsStat);
+                effectCopy.randomId = e.randomId;
+                effectCopy.OnEffect(entity);
+
+                if (effectCopy.effectDuration > 0)
+                {
+                    effectCopy.timeLeft = effectCopy.effectDuration;
+                    entity.AddDebuff(effectCopy);
+                }
             }
         }
     }

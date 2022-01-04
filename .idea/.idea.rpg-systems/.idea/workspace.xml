@@ -3,12 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="97838980-d474-4baa-b791-78d04c949327" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.rpg-systems/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.rpg-systems/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Kira/Data/Effects/BasicDamage.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Kira/Data/Effects/BasicDamage.asset.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Kira/Data/Spells/Spell FireBall.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Kira/Data/Spells/Spell FireBall.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Kira/Data/Spells/Spell Heal.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Kira/Data/Spells/Spell Heal.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Kira/Data/Spells/Spell LightningBolt.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Kira/Data/Spells/Spell LightningBolt.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Kira/Scripts/Spells/Effects/Effect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Kira/Scripts/Spells/Effects/EffectData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Kira/Scripts/Spells/Effects/Effect.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Kira/Scripts/Spells/Effects/EffectData.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Kira/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Kira/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Kira/Scripts/Entity/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Kira/Scripts/Entity/Entity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Kira/Scripts/Entity/EntityCaster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Kira/Scripts/Entity/EntityCaster.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Kira/Scripts/Spells/Effects/Effect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Kira/Scripts/Spells/Effects/Effect.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Kira/Scripts/Spells/Effects/EffectData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Kira/Scripts/Spells/Effects/EffectData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Kira/Scripts/Spells/Spell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Kira/Scripts/Spells/Spell.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Kira/Scripts/Targeting/Targetable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Kira/Scripts/Targeting/Targetable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Kira/Scripts/Targeting/TargetingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Kira/Scripts/Targeting/TargetingManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Kira/Scripts/UI/TargetingUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Kira/Scripts/UI/TargetingUI.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +33,9 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/37/0afe2f4c/Action`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Kira/Scripts/AI/NpcMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Kira/Scripts/Spells/Effects/EffectData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/5f/80179db7/Action`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Kira/Scripts/UI/PlayerUI.cs" root0="FORCE_HIGHLIGHTING" />
@@ -84,7 +93,9 @@
       <workItem from="1640457918383" duration="5903000" />
       <workItem from="1640552558943" duration="3594000" />
       <workItem from="1640601827263" duration="3027000" />
-      <workItem from="1641230215125" duration="3305000" />
+      <workItem from="1641230215125" duration="3902000" />
+      <workItem from="1641271045090" duration="3955000" />
+      <workItem from="1641283023866" duration="5420000" />
     </task>
     <servers />
   </component>
@@ -104,5 +115,24 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Kira/Scripts/UI/TargetingUI.cs</url>
+          <line>42</line>
+          <properties documentPath="G:\Projects\Unity\rpg-systems\Assets\Kira\Scripts\UI\TargetingUI.cs" initialLine="42" containingFunctionPresentation="method 'Deselect'">
+            <startOffsets>
+              <option value="1066" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1067" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

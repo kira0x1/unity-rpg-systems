@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 370157fde3d9f3848a44c48a1fd18e7d, type: 3}
-  m_Name: BasicDamage
+  m_Name: corruption effect
   m_EditorClassIdentifier: 
-  effectName: Dmg
-  icon: {fileID: 0}
-  value: 0
-  instant: 1
-  effectDuration: 0
-  effectFrequency: 0
-  effectTick: 0
+  effectName: Corruption
+  icon: {fileID: 21300000, guid: 7df7ef7a23e39fb45a91256052a868e8, type: 3}
+  value: -20
+  instant: 0
+  effectDuration: 10
+  effectFrequency: 2
+  effectTick: 2
   effectStat: 0

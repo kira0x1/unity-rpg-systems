@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,12 @@ namespace Kira
         public string entityName = "empty";
         public EntityStats entityStats;
         public Dictionary<StatType, Stat> stats = new();
+        public Action<EffectData> OnEffected;
+
+        public void AddDebuff(EffectData effect)
+        {
+            OnEffected?.Invoke(effect);
+        }
 
         public Stat GetStat(StatType statType)
         {

@@ -3,6 +3,7 @@ using UnityEngine;
 namespace Kira
 {
     [SelectionBase]
+    [RequireComponent(typeof(DebuffManager))]
     public class Targetable : MonoBehaviour
     {
         public Entity entity;
@@ -10,10 +11,17 @@ namespace Kira
         [SerializeField] private GameObject _selected;
         private bool _isSelected;
 
+        public DebuffManager debuffManager;
+
         [SerializeField]
         private bool _healOnStart = true;
 
         public bool IsDead => entity.GetStat(StatType.HEALTH).value <= 0;
+
+        private void Awake()
+        {
+            debuffManager = GetComponent<DebuffManager>();
+        }
 
         private void Start()
         {
