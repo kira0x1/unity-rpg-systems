@@ -5,8 +5,15 @@ namespace Kira
     public class TooltipManager : MonoBehaviour
     {
         public static TooltipManager Instance;
+        private TooltipUI tooltipUI;
 
         private void Awake()
+        {
+            InitSingleton();
+            tooltipUI = FindObjectOfType<TooltipUI>();
+        }
+
+        private void InitSingleton()
         {
             if (Instance != null && Instance != this)
             {
@@ -17,9 +24,9 @@ namespace Kira
             Instance = this;
         }
 
-        // Should return a tooltip object that can be accessed by whoevers calling
-        // public void ShowToolTip()
-        // {
-        // }
+        public TooltipUI GetTooltipUI()
+        {
+            return tooltipUI;
+        }
     }
 }

@@ -5,7 +5,7 @@ namespace Kira
     [Serializable]
     public class Stat
     {
-        public float value = 100;
+        public float value;
         public float max = 100;
         public Action OnValueChanged;
 
