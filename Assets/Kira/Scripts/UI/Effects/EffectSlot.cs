@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Kira
 {
-    public class DebuffSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class EffectSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         public Image icon;
         public Image durationImage;
