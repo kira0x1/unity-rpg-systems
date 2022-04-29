@@ -12,6 +12,9 @@ namespace Kira
         private bool _isCasting;
         private CastJob _curJob;
 
+        [SerializeField]
+        private bool enableDebugLogs;
+
         private void Awake()
         {
             entityCharacter = GetComponent<EntityCharacter>();
@@ -48,7 +51,10 @@ namespace Kira
         {
             entityCharacter.entity.entityStats.mana.Reduce(spellData.cost);
             spellData.OnCast(entity);
-            Debug.Log($"{spellData.spellName} done casting!");
+
+            if (enableDebugLogs)
+                Debug.Log($"{spellData.spellName} done casting!");
+
             _isCasting = false;
         }
 
@@ -56,7 +62,9 @@ namespace Kira
         {
             if (_isCasting)
             {
-                // Debug.Log("Cannot cast another spell while casting");
+                if (enableDebugLogs)
+                    Debug.Log("Cannot cast another spell while casting");
+
                 return false;
             }
 
@@ -65,25 +73,33 @@ namespace Kira
 
             if (cost > curMana)
             {
-                // Debug.Log("Not enough mana to cast this spell");
+                if (enableDebugLogs)
+                    Debug.Log("Not enough mana to cast this spell");
+
                 return false;
             }
 
             if (spell.curCD > 0)
             {
-                // Debug.Log("Spell is on cooldown");
+                if (enableDebugLogs)
+                    Debug.Log("Spell is on cooldown");
+
                 return false;
             }
 
             if (spell.requiresTarget && !TargetingManager.HasTarget)
             {
-                // Debug.Log("This spell requires a target");
+                if (enableDebugLogs)
+                    Debug.Log("This spell requires a target");
+
                 return false;
             }
 
             if (spell.requiresTarget && TargetingManager.HasTarget && !spell.canCastOnDead && TargetingManager.Instance.Target.IsDead)
             {
-                // Debug.Log("Cant cast this spell on a dead target");
+                if (enableDebugLogs)
+                    Debug.Log("Cant cast this spell on a dead target");
+
                 return false;
             }
 
@@ -93,7 +109,9 @@ namespace Kira
 
         public void CancelSpell()
         {
-            // Debug.Log("Canceled Cast");
+            if (enableDebugLogs)
+                Debug.Log("Canceled Cast");
+
             _castBar.CancelCast();
             _isCasting = false;
         }
