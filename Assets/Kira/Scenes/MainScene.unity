@@ -432,6 +432,7 @@ GameObject:
   - component: {fileID: 214433759}
   - component: {fileID: 214433760}
   - component: {fileID: 214433761}
+  - component: {fileID: 214433762}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -486,6 +487,18 @@ MonoBehaviour:
     type: 3}
   grid: {fileID: 794716806}
   slots: []
+--- !u!114 &214433762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214433758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf730b822f43e6f41af918c82300c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &260193765
 GameObject:
   m_ObjectHideFlags: 0
@@ -1076,16 +1089,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2017491210087413554, guid: 706de9719568d9d4e999fe9df06c39ef,
-        type: 3}
-      propertyPath: entity
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2017491210087413554, guid: 706de9719568d9d4e999fe9df06c39ef,
-        type: 3}
-      propertyPath: statType
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 706de9719568d9d4e999fe9df06c39ef, type: 3}
 --- !u!224 &466236372 stripped
@@ -1349,7 +1352,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674821366}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1378,11 +1381,11 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1634443002, guid: 8586b1a7cca3bd040a50fd511157d548, type: 3}
+  m_Sprite: {fileID: 2014512861, guid: 8586b1a7cca3bd040a50fd511157d548, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1776,7 +1779,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh49354
+  m_Name: pb_Mesh30020
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2227,7 +2230,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 240285482, guid: 8586b1a7cca3bd040a50fd511157d548, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2d798bdc19c08a541b4c38a0804387af, type: 2}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2538,6 +2541,7 @@ GameObject:
   - component: {fileID: 1195570648}
   - component: {fileID: 1195570647}
   - component: {fileID: 1195570649}
+  - component: {fileID: 1195570650}
   m_Layer: 5
   m_Name: Tooltip
   m_TagString: Untagged
@@ -2618,9 +2622,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b12c1583a4e4d46a8696c87822cf3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  headerText: {fileID: 0}
-  descriptionText: {fileID: 0}
-  icon: {fileID: 0}
+  offsetX: 280
+  offsetY: -150
+  headerText: {fileID: 1765981643}
+  descriptionText: {fileID: 1967628929}
+  icon: {fileID: 65087983}
+--- !u!225 &1195570650
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195570645}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1395150194
 GameObject:
   m_ObjectHideFlags: 0

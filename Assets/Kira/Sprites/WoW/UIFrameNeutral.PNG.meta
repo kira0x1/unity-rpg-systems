@@ -154,7 +154,7 @@ TextureImporter:
         width: 193
         height: 97
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 12, y: 13, z: 12, w: 13}
       outline: []
       physicsShape: []
@@ -162,6 +162,27 @@ TextureImporter:
       bones: []
       spriteID: c655e355da163b948969dec574003646
       internalID: -1634443002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIFrameNeutral_3
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 294
+        width: 193
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 18, y: 15, z: 17, w: 18}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e811c0a93d8f5b4da8823c3d058f27c
+      internalID: 2014512861
       vertices: []
       indices: 
       edges: []
@@ -177,6 +198,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      UIFrameNeutral_3: 2014512861
       UIFrameNeutral_1: 240285482
       UIFrameNeutral_2: -1634443002
       UIFrameNeutral_0: -20952595

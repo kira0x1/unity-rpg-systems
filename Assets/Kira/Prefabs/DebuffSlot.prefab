@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.8616514, b: 0.21383637, a: 0.4862745}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -247,3 +247,14 @@ MonoBehaviour:
   icon: {fileID: 9158683520340051704}
   durationImage: {fileID: 3720576238727324148}
   duration: 0
+  effect:
+    name: 
+    icon: {fileID: 0}
+    value: 0
+    instant: 0
+    effectDuration: 0
+    effectFrequency: 0
+    effectTick: 0
+    effectTickTime: 0
+    effectsStat: 0
+    timeLeft: 0

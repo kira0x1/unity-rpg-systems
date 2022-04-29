@@ -11,6 +11,8 @@ namespace Kira
         public float duration;
         public EffectData effect;
 
+        private bool showToolTip;
+
         public void SetBuff(EffectData effect)
         {
             this.effect = effect;
@@ -29,22 +31,22 @@ namespace Kira
             Destroy(gameObject);
         }
 
-        private void ShowToolTip()
+        private void Update()
         {
-        }
-
-        private void HideToolTip()
-        {
+            if (!showToolTip) return;
+            TooltipManager.Instance.GetTooltipUI().ShowEffectTooltip(effect);
         }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            ShowToolTip();
+            showToolTip = true;
+            TooltipManager.Instance.GetTooltipUI().ShowEffectTooltip(effect);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            HideToolTip();
+            showToolTip = false;
+            TooltipManager.Instance.GetTooltipUI().HideTooltip();
         }
     }
 }

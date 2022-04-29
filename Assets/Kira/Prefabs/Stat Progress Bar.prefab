@@ -96,8 +96,8 @@ MonoBehaviour:
   _fill: {fileID: 2017491210605044521}
   _slowFill: {fileID: 2017491212091182482}
   _text: {fileID: 2017491211482460369}
-  statType: 1
-  entity: {fileID: 11400000, guid: f4ede1765904e40498848235283ca582, type: 2}
+  statType: 0
+  entity: {fileID: 0}
 --- !u!1 &2017491210605044519
 GameObject:
   m_ObjectHideFlags: 0
