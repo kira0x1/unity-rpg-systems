@@ -63,6 +63,7 @@ namespace Kira
             // if (!isNewEffect) return;
             // var slot = Instantiate(slotPrefab, grid);
             // slot.SetBuff(e);
+
             OnTarget(target);
         }
 

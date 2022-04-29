@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Kira
 {
-    public class DebuffSlot : MonoBehaviour
+    public class DebuffSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         public Image icon;
         public Image durationImage;
@@ -26,6 +27,24 @@ namespace Kira
         public void RemoveBuff()
         {
             Destroy(gameObject);
+        }
+
+        private void ShowToolTip()
+        {
+        }
+
+        private void HideToolTip()
+        {
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            ShowToolTip();
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            HideToolTip();
         }
     }
 }
