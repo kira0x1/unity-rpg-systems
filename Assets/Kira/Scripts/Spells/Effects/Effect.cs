@@ -14,6 +14,7 @@ namespace Kira
         public float effectTick;
         public StatType effectStat = StatType.HEALTH;
 
+        // Create an instance of the effect
         public EffectData CreateEffectData()
         {
             return new EffectData(effectName, icon, value, instant, effectDuration, effectFrequency, effectTick, effectStat);

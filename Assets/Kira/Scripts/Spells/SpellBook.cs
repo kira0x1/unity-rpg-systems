@@ -5,6 +5,6 @@ namespace Kira
 {
     public class SpellBook : ScriptableObject
     {
-        public List<Spell> spells = new List<Spell>();
+        public List<Spell> spells = new();
     }
 }
