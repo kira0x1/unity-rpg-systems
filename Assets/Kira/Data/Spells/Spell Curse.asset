@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7eb50e0e00ae2154dbd09c05424be31d, type: 3}
-  m_Name: Spell FireBall
+  m_Name: Spell Curse
   m_EditorClassIdentifier: 
-  spellName: Fireball
-  icon: {fileID: 21300000, guid: 2d0997ac1b1fd664e98202450e7ea2d7, type: 3}
+  spellName: Curse
+  icon: {fileID: 21300000, guid: ee34195976181ef4b83f98f5034ab668, type: 3}
   resourceCost: 50
   coolDownTime: 0
-  castTime: 0.2
+  castTime: 0.5
   requiresTarget: 1
   canCastOnDead: 0
+  canCastOnMove: 0
   targetType: 3
   effectDatas:
   - name: DAMAGE
@@ -28,6 +29,7 @@ MonoBehaviour:
     effectDuration: 0
     effectFrequency: 0
     effectTick: 0
+    effectTickTime: 0
     effectsStat: 0
     timeLeft: 0
   effects:

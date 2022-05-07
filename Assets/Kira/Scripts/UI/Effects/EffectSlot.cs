@@ -28,6 +28,7 @@ namespace Kira
 
         public void RemoveBuff()
         {
+            HideToolTip();
             Destroy(gameObject);
         }
 
@@ -35,6 +36,12 @@ namespace Kira
         {
             if (!showToolTip) return;
             TooltipManager.Instance.GetTooltipUI().ShowEffectTooltip(effect);
+        }
+
+        private void HideToolTip()
+        {
+            showToolTip = false;
+            TooltipManager.Instance.GetTooltipUI().HideTooltip();
         }
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -45,8 +52,7 @@ namespace Kira
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            showToolTip = false;
-            TooltipManager.Instance.GetTooltipUI().HideTooltip();
+            HideToolTip();
         }
     }
 }

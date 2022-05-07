@@ -15,7 +15,7 @@ MonoBehaviour:
   entityName: Player
   entityStats:
     health:
-      value: 490
+      value: 30
       max: 500
     mana:
       value: 1000

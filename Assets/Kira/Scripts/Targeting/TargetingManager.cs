@@ -65,7 +65,7 @@ namespace Kira
 
             if (HasTarget)
             {
-                if (_previousSelected.GetInstanceID() == _prevTarget.GetInstanceID()) return;
+                // if (_previousSelected.GetInstanceID() == _prevTarget.GetInstanceID()) return;
 
                 _previousSelected.SetSelected(false);
                 HasTarget = false;

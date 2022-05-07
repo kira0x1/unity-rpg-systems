@@ -43,7 +43,6 @@ namespace Kira
         private void Update()
         {
             if (!tooltipEnabled) return;
-
             RectTransformUtility.ScreenPointToLocalPointInRectangle(_parentCanvas.transform as RectTransform, Input.mousePosition, _parentCanvas.worldCamera, out Vector2 pointerPos);
             transform.position = _parentCanvas.transform.TransformPoint(pointerPos + new Vector2(offsetX, offsetY));
         }
@@ -54,7 +53,7 @@ namespace Kira
             _canvas.alpha = 1f;
             _canvas.interactable = true;
         }
-
+ 
         public void HideTooltip()
         {
             _canvas.alpha = 0f;

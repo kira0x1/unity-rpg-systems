@@ -42,6 +42,7 @@ namespace Kira
         public void Deselect()
         {
             HideUI();
+            TooltipManager.Instance.GetTooltipUI().HideTooltip();
             _stats.health.OnValueChanged -= OnHealthChanged;
             _stats.mana.OnValueChanged -= OnManaChanged;
         }
@@ -63,7 +64,7 @@ namespace Kira
             uiParent.alpha = 1f;
         }
 
-        private void HideUI()
+        public void HideUI()
         {
             uiParent.blocksRaycasts = false;
             uiParent.interactable = false;

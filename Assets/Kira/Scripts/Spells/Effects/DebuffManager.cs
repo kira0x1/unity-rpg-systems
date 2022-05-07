@@ -1,15 +1,19 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Kira
 {
     public class DebuffManager : MonoBehaviour
     {
-        public List<EffectData> _effects = new();
         public Entity entity;
         public Action<EffectData, bool> OnEffect;
-        private List<EffectData> effectsToRemove = new();
+
+        [FormerlySerializedAs("_effects")]
+        public List<EffectData> effects = new List<EffectData>();
+
+        private List<EffectData> _effectsToRemove = new List<EffectData>();
 
         private void Awake()
         {
@@ -29,7 +33,7 @@ namespace Kira
         {
             bool hasEffect = false;
 
-            foreach (EffectData e in _effects)
+            foreach (EffectData e in effects)
             {
                 if (e.randomId == effect.randomId) hasEffect = true;
                 e.timeLeft = e.effectDuration;
@@ -39,7 +43,7 @@ namespace Kira
 
             if (!hasEffect)
             {
-                _effects.Add(effect);
+                effects.Add(effect);
             }
 
             OnEffect?.Invoke(effect, hasEffect);
@@ -47,9 +51,9 @@ namespace Kira
 
         private void Update()
         {
-            effectsToRemove.Clear();
+            _effectsToRemove.Clear();
 
-            foreach (EffectData effect in _effects)
+            foreach (EffectData effect in effects)
             {
                 effect.timeLeft -= Time.deltaTime;
                 effect.effectTickTime += Time.deltaTime;
@@ -63,13 +67,14 @@ namespace Kira
                 if (effect.timeLeft < 0)
                 {
                     effect.timeLeft = 0;
-                    effectsToRemove.Add(effect);
+                    _effectsToRemove.Add(effect);
                 }
             }
 
-            foreach (var e in effectsToRemove)
+            // Remove all effects queued to be removed
+            foreach (var e in _effectsToRemove)
             {
-                _effects.Remove(e);
+                effects.Remove(e);
             }
         }
     }
