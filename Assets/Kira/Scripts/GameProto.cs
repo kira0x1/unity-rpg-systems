@@ -5,21 +5,19 @@ namespace Kira
 {
     public class GameProto : MonoBehaviour
     {
-        [SerializeField]
-        private TextMeshProUGUI statsText;
-
         public Entity entity;
-        private EntityStats stats;
-
         public float amount = 25;
 
+        [SerializeField]
+        private TextMeshProUGUI statsText;
+        private EntityStats stats;
         private Stat healthStat;
 
         private void Start()
         {
             stats = entity.entityStats;
 
-            string content = $"Stats for {entity.name}\n";
+            var content = $"Stats for {entity.name}\n";
             content += $"Health: {stats.health.value} / {stats.health.max}\n";
             content += $"Speed: {stats.speed.value} / {stats.speed.max}";
 

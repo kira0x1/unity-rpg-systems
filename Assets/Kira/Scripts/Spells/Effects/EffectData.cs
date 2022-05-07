@@ -10,16 +10,17 @@ namespace Kira
         public string name;
         public Sprite icon;
         public float value;
-        public bool instant = true;
+        public bool instant;
         public float effectDuration;
         public float effectFrequency;
         public float effectTick;
         public float effectTickTime;
-        public StatType effectsStat = StatType.HEALTH;
+        public StatType effectsStat;
+        public bool canBeDispelled;
 
         public float timeLeft;
 
-        public EffectData(string name, Sprite icon, float value, bool instant, float effectDuration, float effectFrequency, float effectTick, StatType effectsStat = StatType.HEALTH)
+        public EffectData(string name, Sprite icon, float value, bool instant, float effectDuration, float effectFrequency, float effectTick, StatType effectsStat = StatType.HEALTH, bool canBeDispelled = true)
         {
             randomId = Guid.NewGuid();
             this.name = name;
@@ -30,7 +31,23 @@ namespace Kira
             this.effectFrequency = effectFrequency;
             this.effectTick = effectTick;
             this.effectsStat = effectsStat;
-            this.timeLeft = this.effectDuration;
+            this.canBeDispelled = canBeDispelled;
+            timeLeft = this.effectDuration;
+        }
+
+        public EffectData(Effect effect)
+        {
+            randomId = Guid.NewGuid();
+            name = effect.name;
+            icon = effect.icon;
+            value = effect.value;
+            instant = effect.instant;
+            effectDuration = effect.effectDuration;
+            effectFrequency = effect.effectFrequency;
+            effectTick = effect.effectTick;
+            effectsStat = effect.effectStat;
+            canBeDispelled = effect.canBeDispelled;
+            timeLeft = effectDuration;
         }
 
         public void OnEffect(Entity entity)
@@ -43,7 +60,7 @@ namespace Kira
 
         public void DealEffect(Entity entity)
         {
-            var stat = entity.GetStat(effectsStat);
+            Stat stat = entity.GetStat(effectsStat);
             stat.Increase(value);
         }
     }

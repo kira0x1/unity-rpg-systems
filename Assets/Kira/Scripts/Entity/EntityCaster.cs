@@ -1,34 +1,38 @@
-using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Kira
 {
-    [RequireComponent(typeof(EntityCharacter))]
+    [RequireComponent(typeof(EntityCharacter), typeof(EntityController))]
     public class EntityCaster : MonoBehaviour
     {
-        private EntityCharacter entityCharacter;
-        private CastBar _castBar;
-
-        private bool _isCasting;
-        private CastJob _curJob;
-
         [SerializeField]
         private bool enableDebugLogs;
+
+        private EntityCharacter entityCharacter;
+        private EntityController entityController;
+        private CastBar _castBar;
+        private CastJob _curJob;
+        private bool _isCasting;
 
         private void Awake()
         {
             entityCharacter = GetComponent<EntityCharacter>();
+            entityController = GetComponent<EntityController>();
             _castBar = FindObjectOfType<CastBar>();
         }
 
         private void Update()
         {
+            if (!_isCasting) return;
+
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (_isCasting)
-                {
-                    CancelSpell();
-                }
+                CancelSpell();
+            }
+
+            if (!CanMoveCast(_curJob.spellData))
+            {
+                CancelSpell();
             }
         }
 
@@ -58,8 +62,15 @@ namespace Kira
             _isCasting = false;
         }
 
+        /// <summary>
+        /// Checks if can cast a spell
+        /// I.E if has target, resources, is alive, etc.
+        /// </summary>
+        /// <param name="spell"></param>
+        /// <returns></returns>
         private bool CanCast(SpellData spell)
         {
+            // Casting Check
             if (_isCasting)
             {
                 if (enableDebugLogs)
@@ -71,6 +82,7 @@ namespace Kira
             float cost = spell.cost;
             float curMana = entityCharacter.entity.entityStats.mana.value;
 
+            // Mana Check
             if (cost > curMana)
             {
                 if (enableDebugLogs)
@@ -79,6 +91,7 @@ namespace Kira
                 return false;
             }
 
+            // Cooldown Check
             if (spell.curCD > 0)
             {
                 if (enableDebugLogs)
@@ -87,6 +100,7 @@ namespace Kira
                 return false;
             }
 
+            // Target Check
             if (spell.requiresTarget && !TargetingManager.HasTarget)
             {
                 if (enableDebugLogs)
@@ -95,6 +109,7 @@ namespace Kira
                 return false;
             }
 
+            // Death Check
             if (spell.requiresTarget && TargetingManager.HasTarget && !spell.canCastOnDead && TargetingManager.Instance.Target.IsDead)
             {
                 if (enableDebugLogs)
@@ -103,9 +118,21 @@ namespace Kira
                 return false;
             }
 
+            // Movement Check
+            if (!CanMoveCast(spell))
+            {
+                if (enableDebugLogs)
+                {
+                    Debug.Log("Cant cast this spell while moving");
+                }
+
+                return false;
+            }
 
             return true;
         }
+
+        public bool CanMoveCast(SpellData spell) => !(!spell.canCastOnMove && (!entityController.IsGrounded || entityController.IsMoving));
 
         public void CancelSpell()
         {

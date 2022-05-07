@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Kira
@@ -21,6 +22,7 @@ namespace Kira
         public float castTime;
         public bool requiresTarget = true;
         public bool canCastOnDead;
+        public bool canCastOnMove;
 
         public TargetType targetType = TargetType.SELF;
 
@@ -29,19 +31,9 @@ namespace Kira
 
         public SpellData GetData()
         {
-            List<EffectData> data = new();
-
-            for (int i = 0; i < effectDatas.Length; i++)
-            {
-                data.Add(effectDatas[i]);
-            }
-
-            foreach (Effect effect in effects)
-            {
-                data.Add(effect.CreateEffectData());
-            }
-
-            return new SpellData(spellName, icon, resourceCost, coolDownTime, castTime, requiresTarget, data.ToArray(), canCastOnDead);
+            List<EffectData> data = effectDatas.ToList();
+            data.AddRange(effects.Select(effect => effect.CreateEffectData()));
+            return new SpellData(spellName, icon, resourceCost, coolDownTime, castTime, requiresTarget, data.ToArray(), canCastOnDead, canCastOnMove);
         }
     }
 
@@ -56,8 +48,9 @@ namespace Kira
         public EffectData[] effects;
         public bool requiresTarget;
         public bool canCastOnDead;
+        public bool canCastOnMove;
 
-        public SpellData(string spellName, Sprite icon, float cost, float cdTime, float castTime, bool requiresTarget, EffectData[] effects, bool canCastOnDead)
+        public SpellData(string spellName, Sprite icon, float cost, float cdTime, float castTime, bool requiresTarget, EffectData[] effects, bool canCastOnDead, bool canCastOnMove)
         {
             this.spellName = spellName;
             this.icon = icon;
@@ -67,6 +60,7 @@ namespace Kira
             this.requiresTarget = requiresTarget;
             this.effects = effects;
             this.canCastOnDead = canCastOnDead;
+            this.canCastOnMove = canCastOnMove;
             curCD = 0;
         }
 
