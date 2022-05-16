@@ -7,10 +7,10 @@ namespace Kira
     {
         public EffectSlot slotPrefab;
         public Transform grid;
-        public List<EffectSlot> slots = new();
 
-        protected DebuffManager debuffManager;
+        public List<EffectSlot> slots = new();
         protected List<EffectSlot> slotsToRemove = new();
+        protected DebuffManager debuffManager;
 
         protected virtual void Start()
         {
@@ -19,7 +19,7 @@ namespace Kira
 
         protected void ClearSlots()
         {
-            foreach (var slot in slots)
+            foreach (EffectSlot slot in slots)
             {
                 Destroy(slot.gameObject);
             }
@@ -31,9 +31,9 @@ namespace Kira
         {
             ClearSlots();
 
-            foreach (var effect in debuffManager._effects)
+            foreach (EffectData effect in debuffManager._effects)
             {
-                var slot = Instantiate(slotPrefab, grid);
+                EffectSlot slot = Instantiate(slotPrefab, grid);
                 slot.SetBuff(effect);
                 slots.Add(slot);
             }
@@ -61,7 +61,7 @@ namespace Kira
                 }
             }
 
-            foreach (var s in slotsToRemove)
+            foreach (EffectSlot s in slotsToRemove)
             {
                 slots.Remove(s);
                 Destroy(s.gameObject);

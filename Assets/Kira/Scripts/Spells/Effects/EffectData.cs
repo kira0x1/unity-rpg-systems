@@ -10,12 +10,12 @@ namespace Kira
         public string name;
         public Sprite icon;
         public float value;
-        public bool instant = true;
+        public bool instant;
         public float effectDuration;
         public float effectFrequency;
         public float effectTick;
         public float effectTickTime;
-        public StatType effectsStat = StatType.HEALTH;
+        public StatType effectsStat;
 
         public float timeLeft;
 
@@ -43,7 +43,7 @@ namespace Kira
 
         public void DealEffect(Entity entity)
         {
-            var stat = entity.GetStat(effectsStat);
+            Stat stat = entity.GetStat(effectsStat);
             stat.Increase(value);
         }
     }
