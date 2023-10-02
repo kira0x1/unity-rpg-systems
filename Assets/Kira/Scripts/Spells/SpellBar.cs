@@ -17,8 +17,8 @@ namespace Kira
             {
                 Spell spell = spells[i];
                 SpellData spellData = spell.GetData();
-
                 SpellSlot slot = spellSlots[i];
+
                 slot.SetSpell(spellData);
                 slot.OnSpellCast += OnSpellCast;
             }

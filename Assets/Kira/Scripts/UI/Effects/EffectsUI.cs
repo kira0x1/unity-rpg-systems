@@ -31,7 +31,7 @@ namespace Kira
         {
             ClearSlots();
 
-            foreach (EffectData effect in debuffManager._effects)
+            foreach (var effect in debuffManager.effects)
             {
                 EffectSlot slot = Instantiate(slotPrefab, grid);
                 slot.SetBuff(effect);
@@ -58,6 +58,7 @@ namespace Kira
                 if (slot.effect.timeLeft <= 0)
                 {
                     slotsToRemove.Add(slot);
+                    TooltipManager.Instance.GetTooltipUI().HideTooltip();
                 }
             }
 

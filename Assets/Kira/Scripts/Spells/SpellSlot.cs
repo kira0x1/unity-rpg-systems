@@ -13,8 +13,8 @@ namespace Kira
         public KeyCode slotKeybind;
         public Action<SpellData> OnSpellCast;
 
-        [SerializeField] private Image _cdImage;
-
+        [SerializeField]
+        private Image _cdImage;
         private float cdTime;
         private float curCD;
         private bool hasSpell;
