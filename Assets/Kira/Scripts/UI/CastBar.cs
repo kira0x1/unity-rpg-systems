@@ -7,7 +7,6 @@ namespace Kira
     {
         [SerializeField]
         private GameObject _barParent;
-        public bool BarEnabled { get; private set; }
         private CastJob job;
 
         private Coroutine jobCoroutine;
@@ -17,7 +16,6 @@ namespace Kira
         {
             this.job = job;
             _barParent.SetActive(true);
-            BarEnabled = true;
             jobCoroutine = StartCoroutine(job.StartCast());
             updateCastCoroutine = StartCoroutine(UpdateCast());
         }
@@ -36,7 +34,6 @@ namespace Kira
         private void HideBar()
         {
             _barParent.SetActive(false);
-            BarEnabled = false;
         }
 
         protected override void UpdateText()

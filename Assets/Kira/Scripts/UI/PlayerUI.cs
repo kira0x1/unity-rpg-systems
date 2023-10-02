@@ -16,7 +16,7 @@ namespace Kira
         private void Awake()
         {
             entityCharacter = GetComponent<EntityCharacter>();
-            var entity = entityCharacter.entity;
+            Entity entity = entityCharacter.entity;
             healthBar.SetEntity(entity);
             manaBar.SetEntity(entity);
         }
